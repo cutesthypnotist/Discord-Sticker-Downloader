@@ -7,7 +7,7 @@ const $ = require("./jquery-3.2.1.min.js");
 window.jQuery = $;
 
 const downloadBtn = $(`<button class="ui labeled icon red button" id="download" type="button"><i class="cloud icon"></i>Download</button>`);
-const Emoji = (emojiID, animated = false) => `https://cdn.discordapp.com/emojis/${emojiID}.${animated ? "gif" : "png"}?v=1`;
+const Emoji = (emojiID, animated = false) => `https://cdn.discordapp.com/stickers/${emojiID}.${animated ? "gif" : "png"}?v=1`;
 const API = {
     host: "https://discord.com/api/v6",
     emojis: (guild) => `/guilds/${guild}/emojis`,
@@ -133,7 +133,7 @@ $(document).ready(function() {
                 if (!res.ok) return error("Could not fetch server emojis.");
 
                 globalThis.guild = await res.json();
-                globalThis.emojis = renameEmoji(globalThis.guild.emojis)
+                globalThis.emojis = renameEmoji(globalThis.guild.stickers)
                     .sort(sortAlpha);
                 let emojis = globalThis.emojis.reduce((acc, val, i) => {
                     if (i > 149) {
