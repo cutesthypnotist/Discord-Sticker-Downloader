@@ -210,7 +210,7 @@ $(document).ready(function() {
                     res = await _fetch(Emoji(renamedEmoji[i].id, renamedEmoji[i].animated)).then(res => res.blob());
                 } catch {
                     console.log(`Emoji ${renamedEmoji[i].id} blocked by CORS, trying proxy`);
-                    res = await _fetch(`https://cors-anywhere.herokuapp.com/${Emoji(renamedEmoji[i].id, renamedEmoji[i].animated)}`).then(res => res.blob());
+                    res = await _fetch(`https://enigmatic-citadel-39001.herokuapp.com/${Emoji(renamedEmoji[i].id, renamedEmoji[i].animated)}`).then(res => res.blob());
                 }
                 zip.file(`${renamedEmoji[i].name}.${renamedEmoji[i].animated ? "gif" : "png"}`, res);
                 count++;
